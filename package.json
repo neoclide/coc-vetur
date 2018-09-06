@@ -1,6 +1,6 @@
 {
   "name": "coc-vetur",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Vue language server extension for coc",
   "main": "lib/index.js",
   "publisher": "chemzqm",
@@ -23,10 +23,7 @@
         },
         "vetur.execArgv": {
           "type": "array",
-          "default": [
-            "--nolazy",
-            "--inspect-brk=6045"
-          ],
+          "default": [],
           "items": {
             "type": "string"
           }
