@@ -14,8 +14,7 @@
   },
   "contributes": {
     "configuration": {
-      "type": "object",
-      "title": "Vetur",
+      "title": "vetur configuration",
       "properties": {
         "vetur.enable": {
           "type": "boolean",

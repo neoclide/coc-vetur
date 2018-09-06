@@ -1,6 +1,6 @@
 import { ExtensionContext, LanguageClient, ServerOptions, workspace, services, TransportKind, LanguageClientOptions, WorkspaceConfiguration } from 'coc.nvim'
 
-const sections = ['vetur', 'html', 'javascript', 'typescript', 'css', 'less', 'scss']
+const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
 function getConfig(config: WorkspaceConfiguration): any {
   let res = {}
