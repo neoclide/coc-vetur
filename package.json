@@ -212,6 +212,7 @@
   },
   "dependencies": {
     "tslib": "^1.9.3",
+    "vscode-languageserver-protocol": "^3.12.0",
     "vue-language-server": "^0.0.33"
   }
 }
