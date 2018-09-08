@@ -12,6 +12,9 @@
     "build": "tsc -p tsconfig.json",
     "prepare": "yarn clean && yarn build"
   },
+  "activationEvents": [
+    "onLanguage:vue"
+  ],
   "contributes": {
     "configuration": {
       "title": "vetur configuration",
