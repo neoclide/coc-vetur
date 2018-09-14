@@ -1,8 +1,8 @@
 import { ExtensionContext, LanguageClient, ServerOptions, workspace, services, TransportKind, LanguageClientOptions, WorkspaceConfiguration, ProvideCompletionItemsSignature } from 'coc.nvim'
-import { TextDocument, Position, CompletionItem, CompletionList, InsertTextFormat } from 'vscode-languageserver-protocol'
-import { CompletionContext } from 'vscode-languageserver-protocol';
-import { CancellationToken } from 'vscode-jsonrpc';
-import { ProviderResult } from 'coc.nvim/lib/provider';
+import { TextDocument, Position, CompletionItem, CompletionList, InsertTextFormat, DocumentSelector } from 'vscode-languageserver-protocol'
+import { CompletionContext } from 'vscode-languageserver-protocol'
+import { CancellationToken } from 'vscode-jsonrpc'
+import { ProviderResult } from 'coc.nvim/lib/provider'
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
@@ -26,7 +26,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
     workspace.showMessage('vue-language-server not found!', 'error')
     return
   }
-  const selector = config.filetypes || ['vue']
+  const selector: DocumentSelector = [{
+    language: 'vue',
+    scheme: 'file'
+  }]
 
   let serverOptions: ServerOptions = {
     module: file,
@@ -83,7 +86,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
     services.registLanguageClient(client)
   )
 }
-
 
 function fixItem(item: CompletionItem): void {
   item.data = item.data || {}
