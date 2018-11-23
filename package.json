@@ -1,12 +1,17 @@
 {
   "name": "coc-vetur",
   "version": "1.0.9",
-  "description": "Vue language server extension for coc",
+  "description": "Vue language server extension for coc.nvim using vetur",
   "main": "lib/index.js",
   "publisher": "chemzqm",
   "engines": {
     "coc": "^0.0.15"
   },
+  "keywords": [
+    "coc.nvim",
+    "vue",
+    "vetur"
+  ],
   "scripts": {
     "clean": "rimraf lib",
     "build": "tsc -p tsconfig.json",
