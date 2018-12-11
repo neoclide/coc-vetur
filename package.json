@@ -24,23 +24,6 @@
     "configuration": {
       "title": "vetur configuration",
       "properties": {
-        "vetur.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable vetur"
-        },
-        "vetur.execArgv": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
-          }
-        },
-        "vetur.colorDecorators.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "Use color decorators in vue"
-        },
         "vetur.completion.autoImport": {
           "type": "boolean",
           "default": true,
@@ -50,6 +33,14 @@
           "type": "boolean",
           "default": true,
           "description": "Enable/disable Vetur's built-in scaffolding snippets"
+        },
+        "vetur.grammar.customBlocks": {
+          "type": "object",
+          "default": {
+            "docs": "md",
+            "i18n": "json"
+          },
+          "description": "Mapping from custom block tag name to language name. Used for generating grammar to support syntax highlighting for custom blocks."
         },
         "vetur.validation.template": {
           "type": "boolean",
@@ -66,15 +57,27 @@
           "default": true,
           "description": "Validate js/ts in <script>"
         },
+        "vetur.format.options.tabSize": {
+          "type": "number",
+          "default": 2,
+          "description": "Number of spaces per indentation level. Inherited by all formatters."
+        },
+        "vetur.format.options.useTabs": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use tabs for indentation. Inherited by all formatters."
+        },
         "vetur.format.defaultFormatter.html": {
           "type": "string",
-          "default": "none",
+          "default": "prettyhtml",
           "enum": [
             "none",
+            "prettyhtml",
             "js-beautify-html"
           ],
           "enumDescriptions": [
             "disable formatting",
+            "prettyhtml",
             "html formatter of js-beautify"
           ],
           "description": "Default formatter for <template> region"
@@ -150,11 +153,13 @@
           "enum": [
             "none",
             "prettier",
+            "prettier-eslint",
             "vscode-typescript"
           ],
           "enumDescriptions": [
             "disable formatting",
             "js formatter from prettier",
+            "prettier-eslint",
             "js formatter from TypeScript"
           ],
           "description": "Default formatter for <script> region"
@@ -176,8 +181,53 @@
         },
         "vetur.format.defaultFormatterOptions": {
           "type": "object",
+          "properties": {
+            "prettier": {
+              "type": "object",
+              "description": "Global prettier config used by prettier formatter. Used by `prettier` and `prettier-eslint`.\n\nVetur will prefer a prettier config file at home directory if one exists.",
+              "properties": {}
+            },
+            "prettyhtml": {
+              "type": "object",
+              "description": "Options for prettyhtml",
+              "properties": {
+                "printWidth": {
+                  "type": "number",
+                  "default": 100,
+                  "description": "Maximum amount of characters allowed per line"
+                },
+                "singleQuote": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Whether to use single quotes by default"
+                },
+                "wrapAttributes": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Whether to wrap attributes"
+                },
+                "sortAttributes": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Whether to sort attributes"
+                }
+              }
+            },
+            "js-beautify-html": {
+              "type": "object",
+              "description": "Options for js-beautify"
+            }
+          },
           "default": {
-            "js-beautify-html": {}
+            "js-beautify-html": {
+              "wrap_attributes": "force-expand-multiline"
+            },
+            "prettyhtml": {
+              "printWidth": 100,
+              "singleQuote": false,
+              "wrapAttributes": false,
+              "sortAttributes": false
+            }
           },
           "description": "Options for all default formatters"
         },
