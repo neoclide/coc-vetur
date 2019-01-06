@@ -61,7 +61,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       ): ProviderResult<CompletionItem[] | CompletionList> => {
         return Promise.resolve(next(document, position, context, token)).then((res: CompletionItem[] | CompletionList) => {
           let doc = workspace.getDocument(document.uri)
-          if (!doc) return []
+          if (!doc || !res) return []
           let items: CompletionItem[] = res.hasOwnProperty('isIncomplete') ? (res as CompletionList).items : res as CompletionItem[]
           let pre = doc.getline(position.line).slice(0, position.character)
           // searching for class name
