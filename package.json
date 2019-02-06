@@ -258,16 +258,16 @@
   "license": "MIT",
   "devDependencies": {
     "@chemzqm/tsconfig": "^0.0.3",
-    "@chemzqm/tslint-config": "^1.0.17",
-    "@types/node": "^10.12.11",
-    "coc.nvim": "^0.0.32",
-    "rimraf": "^2.6.2",
-    "tslint": "^5.11.0",
-    "typescript": "^3.2.1"
+    "@chemzqm/tslint-config": "^1.0.18",
+    "@types/node": "^10.12.21",
+    "coc.nvim": "^0.0.52",
+    "rimraf": "^2.6.3",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1"
   },
   "dependencies": {
     "tslib": "^1.9.3",
-    "vscode-languageserver-protocol": "^3.13.0",
-    "vue-language-server": "^0.0.38"
+    "vscode-languageserver-protocol": "^3.14.1",
+    "vue-language-server": "^0.0.41"
   }
 }
