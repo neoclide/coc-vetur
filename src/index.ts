@@ -3,6 +3,8 @@ import { TextDocument, Position, CompletionItem, CompletionList, InsertTextForma
 import { CompletionContext } from 'vscode-languageserver-protocol'
 import { CancellationToken } from 'vscode-jsonrpc'
 import { ProviderResult } from 'coc.nvim/lib/provider'
+import fs from 'fs'
+import path from 'path'
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
@@ -21,10 +23,20 @@ export async function activate(context: ExtensionContext): Promise<void> {
   const config = c.get('vetur') as any
   const enable = config.enable
   if (enable === false) return
-  const file = require.resolve('vue-language-server')
-  if (!file) {
-    workspace.showMessage('vue-language-server not found!', 'error')
-    return
+  let file: string
+  let devPath = config.dev && config.dev.vlsPath // config.get<string>('dev.vlsPath', null)
+  if (devPath && fs.existsSync(devPath)) {
+    file = path.join(devPath, 'dist/client/vueMain.js')
+    if (!fs.existsSync(file)) {
+      workspace.showMessage(`vetur server module "${file}" not found!`, 'error')
+      return
+    }
+  } else {
+    file = require.resolve('vue-language-server')
+    if (!file) {
+      workspace.showMessage('vue-language-server module not found!', 'error')
+      return
+    }
   }
   const selector: DocumentSelector = [{
     language: 'vue',

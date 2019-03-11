@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "publisher": "chemzqm",
   "engines": {
-    "coc": "^0.0.15"
+    "coc": "^0.0.58"
   },
   "keywords": [
     "coc.nvim",
@@ -22,7 +22,7 @@
   ],
   "contributes": {
     "configuration": {
-      "title": "vetur configuration",
+      "title": "Vetur",
       "properties": {
         "vetur.completion.autoImport": {
           "type": "boolean",
@@ -33,6 +33,19 @@
           "type": "boolean",
           "default": true,
           "description": "Enable/disable Vetur's built-in scaffolding snippets"
+        },
+        "vetur.completion.tagCasing": {
+          "type": "string",
+          "default": "kebab",
+          "enum": [
+            "initial",
+            "kebab"
+          ],
+          "enumDescriptions": [
+            "use the key in `components: {...}` as is for tag completion and do not force any casing",
+            "kebab-case completion for <my-tag>"
+          ],
+          "description": "Casing conversion for tag completion"
         },
         "vetur.grammar.customBlocks": {
           "type": "object",
@@ -73,12 +86,14 @@
           "enum": [
             "none",
             "prettyhtml",
-            "js-beautify-html"
+            "js-beautify-html",
+            "prettier"
           ],
           "enumDescriptions": [
             "disable formatting",
             "prettyhtml",
-            "html formatter of js-beautify"
+            "html formatter of js-beautify",
+            "prettier"
           ],
           "description": "Default formatter for <template> region"
         },
@@ -250,6 +265,10 @@
           ],
           "default": "off",
           "description": "Traces the communication between VS Code and Vue Language Server."
+        },
+        "vetur.dev.vlsPath": {
+          "type": "string",
+          "description": "Path to VLS for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `yarn global add vue-language-server` and point Vetur to the installed location (`yarn global dir` + node_modules/vue-language-server)"
         }
       }
     }
@@ -259,15 +278,15 @@
   "devDependencies": {
     "@chemzqm/tsconfig": "^0.0.3",
     "@chemzqm/tslint-config": "^1.0.18",
-    "@types/node": "^10.12.21",
-    "coc.nvim": "^0.0.52",
+    "@types/node": "^11.11.0",
+    "coc.nvim": "^0.0.58",
     "rimraf": "^2.6.3",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.1"
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
   },
   "dependencies": {
     "tslib": "^1.9.3",
-    "vscode-languageserver-protocol": "^3.14.1",
-    "vue-language-server": "^0.0.41"
+    "vscode-languageserver-protocol": "^3.15.0-next.1",
+    "vue-language-server": "^0.0.45"
   }
 }
