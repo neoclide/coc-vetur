@@ -2,9 +2,11 @@ import { ExtensionContext, LanguageClient, ServerOptions, workspace, services, T
 import { TextDocument, Position, CompletionItem, CompletionList, InsertTextFormat, DocumentSelector } from 'vscode-languageserver-protocol'
 import { CompletionContext } from 'vscode-languageserver-protocol'
 import { CancellationToken } from 'vscode-jsonrpc'
-import { ProviderResult } from 'coc.nvim/lib/provider'
 import fs from 'fs'
 import path from 'path'
+declare var __webpack_require__: any
+declare var __non_webpack_require__: any
+const requireFunc = typeof __webpack_require__ === "function" ? __non_webpack_require__ : require
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
@@ -32,7 +34,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return
     }
   } else {
-    file = require.resolve('vue-language-server')
+    file = requireFunc.resolve('vue-language-server')
     if (!file) {
       workspace.showMessage('vue-language-server module not found!', 'error')
       return
@@ -70,7 +72,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
         context: CompletionContext,
         token: CancellationToken,
         next: ProvideCompletionItemsSignature
-      ): ProviderResult<CompletionItem[] | CompletionList> => {
+      ) => {
         return Promise.resolve(next(document, position, context, token)).then((res: CompletionItem[] | CompletionList) => {
           let doc = workspace.getDocument(document.uri)
           if (!doc || !res) return []
