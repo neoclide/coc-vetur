@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "webpack",
-    "prepare": "npm-run-all clean build"
+    "prepare": "npx npm-run-all clean build"
   },
   "activationEvents": [
     "onLanguage:vue"
