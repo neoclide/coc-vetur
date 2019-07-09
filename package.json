@@ -289,6 +289,6 @@
     "webpack-cli": "^3.3.4"
   },
   "dependencies": {
-    "vue-language-server": "^0.0.56"
+    "vue-language-server": "^0.0.57"
   }
 }
