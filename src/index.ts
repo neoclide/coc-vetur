@@ -28,7 +28,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   let file: string
   let devPath = config.dev && config.dev.vlsPath // config.get<string>('dev.vlsPath', null)
   if (devPath && fs.existsSync(devPath)) {
-    file = path.join(devPath, 'dist/client/vueMain.js')
+    file = path.join(devPath, 'dist/vueServerMain.js')
     if (!fs.existsSync(file)) {
       workspace.showMessage(`vetur server module "${file}" not found!`, 'error')
       return
