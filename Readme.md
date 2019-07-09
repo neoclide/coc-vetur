@@ -4,6 +4,9 @@ Vue language server extension for [coc.nvim](https://github.com/neoclide/coc.nvi
 
 Using [vue-language-server](https://www.npmjs.com/package/vue-language-server)
 
+**Note:** latest vetur have changed filepath of server, make sure upgrade to
+latest vetur if you're using `vetur.dev.vlsPath` configuration.
+
 ## Install
 
 In your vim/neovim, run command:
