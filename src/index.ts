@@ -95,10 +95,27 @@ export async function activate(context: ExtensionContext): Promise<void> {
   }
 
   let client = new LanguageClient('vetur', 'Vetur Language Server', serverOptions, clientOptions)
+  client.onReady().then(() => {
+    registerCustomClientNotificationHandlers(client)
+  }).catch(_e => {
+    // noop
+  })
 
   subscriptions.push(
     services.registLanguageClient(client)
   )
+}
+
+function registerCustomClientNotificationHandlers(client: LanguageClient): void {
+  client.onNotification('$/displayInfo', (msg: string) => {
+    workspace.showMessage(msg, 'more')
+  })
+  client.onNotification('$/displayWarning', (msg: string) => {
+    workspace.showMessage(msg, 'warning')
+  })
+  client.onNotification('$/displayError', (msg: string) => {
+    workspace.showMessage(msg, 'error')
+  })
 }
 
 function fixItem(item: CompletionItem): void {

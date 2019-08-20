@@ -24,6 +24,11 @@
     "configuration": {
       "title": "Vetur",
       "properties": {
+        "vetur.useWorkspaceDependencies": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use dependencies from workspace. Currently only for TypeScript."
+        },
         "vetur.completion.autoImport": {
           "type": "boolean",
           "default": true,
@@ -47,14 +52,6 @@
           ],
           "description": "Casing conversion for tag completion"
         },
-        "vetur.grammar.customBlocks": {
-          "type": "object",
-          "default": {
-            "docs": "md",
-            "i18n": "json"
-          },
-          "description": "Mapping from custom block tag name to language name. Used for generating grammar to support syntax highlighting for custom blocks."
-        },
         "vetur.validation.template": {
           "type": "boolean",
           "default": true,
@@ -69,6 +66,11 @@
           "type": "boolean",
           "default": true,
           "description": "Validate js/ts in <script>"
+        },
+        "vetur.format.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable the Vetur document formatter."
         },
         "vetur.format.options.tabSize": {
           "type": "number",
@@ -185,6 +187,7 @@
           "enum": [
             "none",
             "prettier",
+            "prettier-tslint",
             "vscode-typescript"
           ],
           "enumDescriptions": [
@@ -269,6 +272,24 @@
         "vetur.dev.vlsPath": {
           "type": "string",
           "description": "Path to VLS for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `yarn global add vue-language-server` and point Vetur to the installed location (`yarn global dir` + node_modules/vue-language-server)"
+        },
+        "vetur.dev.logLevel": {
+          "type": "string",
+          "description": "Log level for VLS",
+          "default": "INFO",
+          "enum": [
+            "INFO",
+            "DEBUG"
+          ],
+          "enumDescriptions": [
+            "Only log info messages. This is the default.",
+            "Log info and debug messages."
+          ]
+        },
+        "vetur.experimental.templateInterpolationService": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable template interpolation service that offers diagnostics / hover / definition / references."
         }
       }
     }
@@ -278,17 +299,17 @@
   "devDependencies": {
     "@chemzqm/tsconfig": "^0.0.3",
     "@chemzqm/tslint-config": "^1.0.18",
-    "@types/node": "^11.11.0",
-    "coc.nvim": "^0.0.71",
-    "rimraf": "^2.6.3",
-    "ts-loader": "^6.0.3",
-    "tslint": "^5.17.0",
+    "@types/node": "^12.7.2",
+    "coc.nvim": "^0.0.73",
+    "rimraf": "^3.0.0",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.18.0",
     "typescript": "^3",
     "vscode-languageserver-protocol": "^3.15.0-next.6",
-    "webpack": "^4.34.0",
-    "webpack-cli": "^3.3.4"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   },
   "dependencies": {
-    "vue-language-server": "^0.0.57"
+    "vue-language-server": "^0.0.60"
   }
 }
