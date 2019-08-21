@@ -4,9 +4,10 @@ import { CompletionContext } from 'vscode-languageserver-protocol'
 import { CancellationToken } from 'vscode-jsonrpc'
 import fs from 'fs'
 import path from 'path'
+import os from 'os'
 declare var __webpack_require__: any
 declare var __non_webpack_require__: any
-const requireFunc = typeof __webpack_require__ === "function" ? __non_webpack_require__ : require
+const requireFunc = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
@@ -63,7 +64,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
     },
     outputChannelName: 'vetur',
     initializationOptions: {
-      config: getConfig(c)
+      config: getConfig(c),
+      globalSnippetDir: getGlobalSnippetDir()
     },
     middleware: {
       provideCompletionItem: (
@@ -83,8 +85,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
             items = items.filter(o => o.label.startsWith('.'))
             items.forEach(fixItem)
           }
-          if (context.triggerCharacter == ':'
-            || /\:\w*$/.test(pre)) {
+          if (context.triggerCharacter == ':' || /\:\w*$/.test(pre)) {
             items = items.filter(o => o.label.startsWith(':'))
             items.forEach(fixItem)
           }
@@ -124,4 +125,16 @@ function fixItem(item: CompletionItem): void {
   item.label = item.label.slice(1)
   item.textEdit = null
   item.insertTextFormat = InsertTextFormat.PlainText
+}
+
+function getGlobalSnippetDir(): string {
+  const appName = 'Code'
+
+  if (process.platform === 'win32') {
+    return path.resolve(process.env['APPDATA'] || '', appName, 'User/snippets/vetur')
+  } else if (process.platform === 'darwin') {
+    return path.resolve(os.homedir(), 'Library/Application Support', appName, 'User/snippets/vetur')
+  } else {
+    return path.resolve(os.homedir(), '.config', appName, 'User/snippets/vetur')
+  }
 }
