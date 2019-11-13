@@ -21,6 +21,15 @@
     "onLanguage:vue"
   ],
   "contributes": {
+    "rootPatterns": [
+      {
+        "filetype": "vue",
+        "patterns": [
+          "package.json",
+          "vue.config.js"
+        ]
+      }
+    ],
     "configuration": {
       "title": "Vetur",
       "properties": {
