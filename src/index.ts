@@ -35,9 +35,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return
     }
   } else {
-    file = requireFunc.resolve('vue-language-server')
+    file = requireFunc.resolve("vls");
+    file = file.replace(/main.js$/, "vueServerMain.js");
     if (!file) {
-      workspace.showMessage('vue-language-server module not found!', 'error')
+      workspace.showMessage("vls module not found!", "error");
       return
     }
   }
@@ -48,7 +49,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
   let serverOptions: ServerOptions = {
     module: file,
-    args: ['--node-ipc'],
     transport: TransportKind.ipc,
     options: {
       cwd: workspace.root,
