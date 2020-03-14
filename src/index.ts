@@ -35,10 +35,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return
     }
   } else {
-    file = requireFunc.resolve("vls");
-    file = file.replace(/main.js$/, "vueServerMain.js");
+    file = requireFunc.resolve('vls');
+    file = file.replace(/main.js$/, 'vueServerMain.js');
     if (!file) {
-      workspace.showMessage("vls module not found!", "error");
+      workspace.showMessage('vls module not found!', 'error');
       return
     }
   }
