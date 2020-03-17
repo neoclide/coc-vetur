@@ -81,10 +81,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
           let items: CompletionItem[] = res.hasOwnProperty('isIncomplete') ? (res as CompletionList).items : res as CompletionItem[]
           let pre = doc.getline(position.line).slice(0, position.character)
           // searching for class name
-          if (/(^|\s)\.\w*$/.test(pre)) {
-            items = items.filter(o => o.label.startsWith('.'))
-            items.forEach(fixItem)
-          }
+          // if (/(^|\s)\.\w*$/.test(pre)) {
+          //   items = items.filter(o => o.label.startsWith('.'))
+          //   items.forEach(fixItem)
+          // }
           if (context.triggerCharacter == ':' || /\:\w*$/.test(pre)) {
             items = items.filter(o => o.label.startsWith(':'))
             items.forEach(fixItem)
