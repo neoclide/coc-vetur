@@ -319,6 +319,7 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
+    "eslint-plugin-vue": "^6.2.2",
     "vls": "^0.2.0"
   }
 }
