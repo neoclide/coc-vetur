@@ -148,6 +148,15 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 
 Trigger completion in `coc-settings.json` to get full list of options.
 
+## Troubleshooting
+
+- Add `"vetur.trace.server": "verbose"` to your `coc-settings.json` (opened by command
+  `:CocConfig`) for verbose messages.
+  `coc-settings.json`
+- Restart coc server by command `:CocRestart`
+- Make the issue happen.
+- Open tsserver output channel by command `:CocCommand workspace.showOutput vetur`.
+
 ## License
 
 MIT
