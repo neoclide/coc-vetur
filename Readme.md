@@ -15,6 +15,16 @@ In your vim/neovim, run command:
 :CocInstall coc-vetur
 ```
 
+**Note** you have to install `eslint` and `eslint-plugin-vue` by:
+
+```
+npm i eslint eslint-plugin-vue -D
+```
+
+in your project root for this extension to work.
+
+Make sure your workspace root is correct by `:echo g:WorkspaceFolders`
+
 ## Features
 
 Language server features provided by [vue-language-server](https://www.npmjs.com/package/vls).
