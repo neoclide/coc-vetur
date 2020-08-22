@@ -1,7 +1,6 @@
 import { ExtensionContext, LanguageClient, ServerOptions, workspace, services, TransportKind, LanguageClientOptions, WorkspaceConfiguration, ProvideCompletionItemsSignature } from 'coc.nvim'
-import { TextDocument, Position, CompletionItem, CompletionList, InsertTextFormat, DocumentSelector } from 'vscode-languageserver-protocol'
-import { CompletionContext } from 'vscode-languageserver-protocol'
-import { CancellationToken } from 'vscode-jsonrpc'
+import { Position, CompletionItem, CompletionList, InsertTextFormat, DocumentSelector } from 'vscode-languageserver-protocol'
+import { CompletionContext, CancellationToken } from 'vscode-languageserver-protocol'
 import fs from 'fs'
 import path from 'path'
 import os from 'os'
@@ -35,10 +34,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return
     }
   } else {
-    file = requireFunc.resolve('vls');
-    file = file.replace(/main.js$/, 'vueServerMain.js');
+    file = requireFunc.resolve('vls')
+    file = file.replace(/main.js$/, 'vueServerMain.js')
     if (!file) {
-      workspace.showMessage('vls module not found!', 'error');
+      workspace.showMessage('vls module not found!', 'error')
       return
     }
   }
@@ -69,7 +68,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     },
     middleware: {
       provideCompletionItem: (
-        document: TextDocument,
+        document,
         position: Position,
         context: CompletionContext,
         token: CancellationToken,
