@@ -36,17 +36,39 @@
         "vetur.useWorkspaceDependencies": {
           "type": "boolean",
           "default": false,
-          "description": "Use dependencies from workspace. Currently only for TypeScript."
+          "description": "Use dependencies from workspace. Currently only for TypeScript.",
+          "scope": "application"
         },
         "vetur.completion.autoImport": {
           "type": "boolean",
           "default": true,
           "description": "Include completion for module export and auto import them"
         },
-        "vetur.completion.useScaffoldSnippets": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable/disable Vetur's built-in scaffolding snippets"
+        "vetur.completion.scaffoldSnippetSources": {
+          "type": "object",
+          "default": {
+            "workspace": "💼",
+            "user": "🗒️",
+            "vetur": "✌"
+          },
+          "properties": {
+            "workspace": {
+              "type": "string",
+              "default": "💼",
+              "description": "Show Scaffold Snippets from `<WORKSPACE>/.vscode/vetur/snippets`."
+            },
+            "user": {
+              "type": "string",
+              "default": "🗒️",
+              "description": "Show Scaffold Snippets from `<USER-DATA-DIR>/User/snippets/vetur`."
+            },
+            "vetur": {
+              "type": "string",
+              "default": "✌",
+              "description": "Show Scaffold Snippets bundled in Vetur."
+            }
+          },
+          "description": "Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to \"\" to disable it.\n\n- workspace: `<WORKSPACE>/.vscode/vetur/snippets`.\n- user: `<USER-DATA-DIR>/User/snippets/vetur`.\n- vetur: Bundled in Vetur.\n\nThe default is:\n```\n\"vetur.completion.scaffoldSnippetSources\": {\n  \"workspace\": \"💼\",\n  \"user\": \"🗒️\",\n  \"vetur\": \"✌\"\n}\n```\n\nAlternatively, you can do:\n\n```\n\"vetur.completion.scaffoldSnippetSources\": {\n  \"workspace\": \"(W)\",\n  \"user\": \"(U)\",\n  \"vetur\": \"(V)\"\n}\n```\n\nRead more: https://vuejs.github.io/vetur/snippet.html."
         },
         "vetur.completion.tagCasing": {
           "type": "string",
@@ -61,10 +83,28 @@
           ],
           "description": "Casing conversion for tag completion"
         },
+        "vetur.grammar.customBlocks": {
+          "type": "object",
+          "default": {
+            "docs": "md",
+            "i18n": "json"
+          },
+          "description": "Mapping from custom block tag name to language name. Used for generating grammar to support syntax highlighting for custom blocks."
+        },
         "vetur.validation.template": {
           "type": "boolean",
           "default": true,
           "description": "Validate vue-html in <template> using eslint-plugin-vue"
+        },
+        "vetur.validation.templateProps": {
+          "type": "boolean",
+          "default": false,
+          "description": "Validate props usage in <template> region. Show error/warning for not passing declared props to child components."
+        },
+        "vetur.validation.interpolation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate interpolations in <template> region using TypeScript language service"
         },
         "vetur.validation.style": {
           "type": "boolean",
@@ -108,6 +148,19 @@
           ],
           "description": "Default formatter for <template> region"
         },
+        "vetur.format.defaultFormatter.pug": {
+          "type": "string",
+          "default": "prettier",
+          "enum": [
+            "none",
+            "prettier"
+          ],
+          "enumDescriptions": [
+            "disable formatting",
+            "prettier"
+          ],
+          "description": "Default formatter for <template lang='pug'> region"
+        },
         "vetur.format.defaultFormatter.css": {
           "type": "string",
           "default": "prettier",
@@ -146,6 +199,19 @@
             "scss formatter using scss parser from prettier"
           ],
           "description": "Default formatter for <style lang='scss'> region"
+        },
+        "vetur.format.defaultFormatter.sass": {
+          "type": "string",
+          "default": "sass-formatter",
+          "enum": [
+            "none",
+            "sass-formatter"
+          ],
+          "enumDescriptions": [
+            "disable formatting",
+            "sass formatter"
+          ],
+          "description": "Default formatter for <style lang='sass'> region"
         },
         "vetur.format.defaultFormatter.less": {
           "type": "string",
@@ -280,7 +346,13 @@
         },
         "vetur.dev.vlsPath": {
           "type": "string",
-          "description": "Path to VLS for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `yarn global add vue-language-server` and point Vetur to the installed location (`yarn global dir` + node_modules/vue-language-server)"
+          "description": "Path to vls for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `yarn global add vls` and point Vetur to the installed location (`yarn global dir` + node_modules/vls)",
+          "scope": "machine"
+        },
+        "vetur.dev.vlsPort": {
+          "type": "number",
+          "description": "The port that VLS listens to. Can be used for attaching to the VLS Node process for debugging / profiling.",
+          "default": -1
         },
         "vetur.dev.logLevel": {
           "type": "string",
@@ -298,7 +370,7 @@
         "vetur.experimental.templateInterpolationService": {
           "type": "boolean",
           "default": false,
-          "description": "Enable template interpolation service that offers diagnostics / hover / definition / references."
+          "description": "Enable template interpolation service that offers hover / definition / references in Vue interpolations."
         }
       }
     }
@@ -319,6 +391,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "vls": "^0.5.1"
+    "vls": "^0.5.3"
   }
 }
