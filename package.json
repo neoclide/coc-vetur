@@ -133,7 +133,7 @@
         },
         "vetur.format.defaultFormatter.html": {
           "type": "string",
-          "default": "prettyhtml",
+          "default": "prettier",
           "enum": [
             "none",
             "prettyhtml",
@@ -142,7 +142,7 @@
           ],
           "enumDescriptions": [
             "disable formatting",
-            "prettyhtml",
+            "🚧 [DEPRECATED] prettyhtml",
             "html formatter of js-beautify",
             "prettier"
           ],

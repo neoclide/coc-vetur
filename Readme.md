@@ -42,7 +42,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.format.enable`: Enable/disable the Vetur document formatter., default: `true`
 - `vetur.format.options.tabSize`: Number of spaces per indentation level. Inherited by all formatters., default: `2`
 - `vetur.format.options.useTabs`: Use tabs for indentation. Inherited by all formatters., default: `false`
-- `vetur.format.defaultFormatter.html`: Default formatter for <template> region, default: `"prettyhtml"`
+- `vetur.format.defaultFormatter.html`: Default formatter for <template> region, default: `"prettier"`
   Valid options: ["none","prettyhtml","js-beautify-html","prettier"]
 - `vetur.format.defaultFormatter.css`: Default formatter for <style> region, default: `"prettier"`
   Valid options: ["none","prettier"]
