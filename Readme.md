@@ -36,7 +36,10 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.completion.useScaffoldSnippets`: Enable/disable Vetur's built-in scaffolding snippets, default: `true`
 - `vetur.completion.tagCasing`: Casing conversion for tag completion, default: `"kebab"`
   Valid options: ["initial","kebab"]
+- `vetur.grammar.customBlocks`: Mapping from custom block tag name to language name. Used for generating grammar to support syntax highlighting for custom blocks, default: `{"docs":"md","i18n":"json"}`
 - `vetur.validation.template`: Validate vue-html in <template> using eslint-plugin-vue, default: `true`
+- `vetur.validation.templateProps`: Validate props usage in <template> region. Show error/warning for not passing declared props to child components and show error for passing wrongly typed interpolation expressions, default: `false`
+- `vetur.validation.interpolation`: Validate interpolations in <template> region using TypeScript language service, default: `true`
 - `vetur.validation.style`: Validate css/scss/less/postcss in <style>, default: `true`
 - `vetur.validation.script`: Validate js/ts in <script>, default: `true`
 - `vetur.format.enable`: Enable/disable the Vetur document formatter., default: `true`
@@ -44,12 +47,16 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.format.options.useTabs`: Use tabs for indentation. Inherited by all formatters., default: `false`
 - `vetur.format.defaultFormatter.html`: Default formatter for <template> region, default: `"prettier"`
   Valid options: ["none","prettyhtml","js-beautify-html","prettier"]
+- `vetur.format.defaultFormatter.pug`: Default formatter for <template lang='pug'> region, default: `"prettier"`
+  Valid options: ["none","prettier"]
 - `vetur.format.defaultFormatter.css`: Default formatter for <style> region, default: `"prettier"`
   Valid options: ["none","prettier"]
 - `vetur.format.defaultFormatter.postcss`: Default formatter for <style lang='postcss'> region, default: `"prettier"`
   Valid options: ["none","prettier"]
 - `vetur.format.defaultFormatter.scss`: Default formatter for <style lang='scss'> region, default: `"prettier"`
   Valid options: ["none","prettier"]
+- `vetur.format.defaultFormatter.sass`: Default formatter for <style lang='sass'> region, default: `"sass-formatter"`
+  Valid options: ["none","sass-formatter"]
 - `vetur.format.defaultFormatter.less`: Default formatter for <style lang='less'> region, default: `"prettier"`
   Valid options: ["none","prettier"]
 - `vetur.format.defaultFormatter.stylus`: Default formatter for <style lang='stylus'> region, default: `"stylus-supremacy"`
@@ -69,6 +76,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
   1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.
   2. `yarn global add vue-language-server` and point Vetur to the installed location (`yarn global dir` + node_modules/vue-language-server)
 
+- `vetur.dev.vlsPort`: The port that VLS listens to. Can be used for attaching to the VLS Node process for debugging / profiling, default: `-1`
 - `vetur.dev.logLevel`: Log level for VLS, default: `"INFO"`
   Valid options: ["INFO","DEBUG"]
 - `vetur.experimental.templateInterpolationService`: Enable template interpolation service that offers diagnostics / hover / definition / references., default: `false`
