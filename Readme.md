@@ -61,6 +61,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.format.defaultFormatterOptions`: Options for all default formatters, default: `{"js-beautify-html":{"wrap_attributes":"force-expand-multiline"},"prettyhtml":{"printWidth":100,"singleQuote":false,"wrapAttributes":false,"sortAttributes":false}}`
 - `vetur.format.styleInitialIndent`: Whether to have initial indent for <style> region, default: `false`
 - `vetur.format.scriptInitialIndent`: Whether to have initial indent for <script> region, default: `false`
+- `vetur.languageFeatures.codeActions`: Whether to enable codeActions, default: `true`
 - `vetur.trace.server`: Traces the communication between VS Code and Vue Language Server., default: `"off"`
   Valid options: ["off","messages","verbose"]
 - `vetur.dev.vlsPath`: Path to VLS for Vetur developers. There are two ways of using it.
