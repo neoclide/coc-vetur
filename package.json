@@ -347,7 +347,7 @@
             "verbose"
           ],
           "default": "off",
-          "description": "Traces the communication between VS Code and Vue Language Server."
+          "description": "Traces the communication between coc.nvim and Vue Language Server."
         },
         "vetur.dev.vlsPath": {
           "type": "string",
