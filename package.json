@@ -383,8 +383,6 @@
   "author": "chemzqm@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "@chemzqm/tsconfig": "^0.0.3",
-    "@chemzqm/tslint-config": "^1.0.18",
     "@types/node": "^14.0.13",
     "coc.nvim": "^0.0.77",
     "rimraf": "^3.0.2",
@@ -396,6 +394,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "vls": "^0.5.3"
+    "vls": "^0.5.4"
   }
 }
