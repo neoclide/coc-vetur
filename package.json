@@ -394,6 +394,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "vls": "^0.5.4"
+    "vls": "^0.5.8"
   }
 }
