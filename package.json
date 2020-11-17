@@ -1,6 +1,6 @@
 {
   "name": "coc-vetur",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Vue language server extension for coc.nvim using vetur",
   "main": "lib/index.js",
   "publisher": "chemzqm",
