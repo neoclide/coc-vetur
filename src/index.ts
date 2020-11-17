@@ -35,8 +35,8 @@ export async function activate(context: ExtensionContext): Promise<void> {
     }
   } else {
     file = requireFunc.resolve('vls')
-    file = file.replace(/main.js$/, 'vueServerMain.js')
-    if (!file) {
+    file = file.replace(/vls.js$/, 'vueServerMain.js')
+    if (!file || !fs.existsSync(file)) {
       workspace.showMessage('vls module not found!', 'error')
       return
     }
