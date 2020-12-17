@@ -1,9 +1,8 @@
-import { ExtensionContext, LanguageClient, ServerOptions, workspace, services, TransportKind, LanguageClientOptions, WorkspaceConfiguration, ProvideCompletionItemsSignature } from 'coc.nvim'
-import { Position, CompletionItem, CompletionList, InsertTextFormat, DocumentSelector } from 'vscode-languageserver-protocol'
-import { CompletionContext, CancellationToken } from 'vscode-languageserver-protocol'
+import { ExtensionContext, LanguageClient, LanguageClientOptions, ProvideCompletionItemsSignature, ServerOptions, services, TransportKind, window, workspace, WorkspaceConfiguration } from 'coc.nvim'
 import fs from 'fs'
-import path from 'path'
 import os from 'os'
+import path from 'path'
+import { CancellationToken, CompletionContext, CompletionItem, CompletionList, DocumentSelector, InsertTextFormat, Position } from 'vscode-languageserver-protocol'
 declare var __webpack_require__: any
 declare var __non_webpack_require__: any
 const requireFunc = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require
@@ -30,14 +29,14 @@ export async function activate(context: ExtensionContext): Promise<void> {
   if (devPath && fs.existsSync(devPath)) {
     file = path.join(devPath, 'dist/vueServerMain.js')
     if (!fs.existsSync(file)) {
-      workspace.showMessage(`vetur server module "${file}" not found!`, 'error')
+      window.showMessage(`vetur server module "${file}" not found!`, 'error')
       return
     }
   } else {
     file = requireFunc.resolve('vls')
     file = file.replace(/vls.js$/, 'vueServerMain.js')
     if (!file || !fs.existsSync(file)) {
-      workspace.showMessage('vls module not found!', 'error')
+      window.showMessage('vls module not found!', 'error')
       return
     }
   }
@@ -108,13 +107,13 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
 function registerCustomClientNotificationHandlers(client: LanguageClient): void {
   client.onNotification('$/displayInfo', (msg: string) => {
-    workspace.showMessage(msg, 'more')
+    window.showMessage(msg, 'more')
   })
   client.onNotification('$/displayWarning', (msg: string) => {
-    workspace.showMessage(msg, 'warning')
+    window.showMessage(msg, 'warning')
   })
   client.onNotification('$/displayError', (msg: string) => {
-    workspace.showMessage(msg, 'error')
+    window.showMessage(msg, 'error')
   })
 }
 

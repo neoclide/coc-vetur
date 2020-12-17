@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "webpack",
-    "prepare": "npx npm-run-all clean build"
+    "prepare": "webpack"
   },
   "activationEvents": [
     "onLanguage:vue"
@@ -383,12 +383,12 @@
   "author": "chemzqm@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^14.14.7",
-    "coc.nvim": "^0.0.79",
+    "@types/node": "10.12.0",
+    "coc.nvim": "^0.0.79-next.18",
     "rimraf": "^3.0.2",
     "ts-loader": "^8.0.11",
     "tslint": "^6.1.3",
-    "typescript": "^4",
+    "typescript": "^4.1.3",
     "vscode-languageserver-protocol": "^3.15.3",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
