@@ -7,6 +7,13 @@ Using [vue-language-server](https://www.npmjs.com/package/vls)
 **Note:** latest vetur have changed filepath of server, make sure upgrade to
 latest vetur if you're using `vetur.dev.vlsPath` configuration.
 
+## Supporting
+
+If you like my extension, consider supporting me on Patreon or PayPal:
+
+<a href="https://www.patreon.com/chemzqm"><img src="https://c5.patreon.com/external/logo/become_a_patron_button.png" alt="Patreon donate button" /> </a>
+<a href="https://www.paypal.com/paypalme/chezqm"><img src="https://werwolv.net/assets/paypal_banner.png" alt="PayPal donate button" /> </a>
+
 ## Install
 
 In your vim/neovim, run command:
