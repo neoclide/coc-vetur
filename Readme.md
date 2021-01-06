@@ -31,6 +31,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 
 ## Configuration options
 
+- `vetur.ignoreProjectWarning`: Vetur will warn about not setup correctly for the project. You can disable it., default: `false`
 - `vetur.useWorkspaceDependencies`: Use dependencies from workspace. Currently only for TypeScript., default: `false`
 - `vetur.completion.autoImport`: Include completion for module export and auto import them, default: `true`
 - `vetur.completion.useScaffoldSnippets`: Enable/disable Vetur's built-in scaffolding snippets, default: `true`
