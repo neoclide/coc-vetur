@@ -3,9 +3,6 @@ import fs from 'fs'
 import os from 'os'
 import path from 'path'
 import { CancellationToken, CompletionContext, CompletionItem, CompletionList, DocumentSelector, InsertTextFormat, Position } from 'vscode-languageserver-protocol'
-declare var __webpack_require__: any
-declare var __non_webpack_require__: any
-const requireFunc = typeof __webpack_require__ === 'function' ? __non_webpack_require__ : require
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
@@ -33,7 +30,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return
     }
   } else {
-    file = requireFunc.resolve('vls')
+    file = context.asAbsolutePath('node_modules/vls/dist/vueServerMain.js')
     file = file.replace(/vls.js$/, 'vueServerMain.js')
     if (!file || !fs.existsSync(file)) {
       window.showMessage('vls module not found!', 'error')
