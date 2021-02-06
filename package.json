@@ -13,7 +13,8 @@
     "vetur"
   ],
   "scripts": {
-    "build": "node esbuild.js"
+    "build": "node esbuild.js",
+    "prepare": "node esbuild.js"
   },
   "activationEvents": [
     "onLanguage:vue"
