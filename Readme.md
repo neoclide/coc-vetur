@@ -77,6 +77,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.format.styleInitialIndent`: Whether to have initial indent for <style> region, default: `false`
 - `vetur.format.scriptInitialIndent`: Whether to have initial indent for <script> region, default: `false`
 - `vetur.languageFeatures.codeActions`: Whether to enable codeActions, default: `true`
+- `vetur.languageFeatures.updateImportOnFileMove`: Whether to automatic updating import path when rename or move a file, default: `true`
 - `vetur.trace.server`: Traces the communication between VS Code and Vue Language Server., default: `"off"`
   Valid options: ["off","messages","verbose"]
 - `vetur.dev.vlsPath`: Path to VLS for Vetur developers. There are two ways of using it.
