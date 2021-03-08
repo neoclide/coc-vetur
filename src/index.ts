@@ -1,4 +1,4 @@
-import { ExtensionContext, LanguageClient, LanguageClientOptions, ProvideCompletionItemsSignature, ServerOptions, services, TransportKind, window, workspace, WorkspaceConfiguration } from 'coc.nvim'
+import { commands, ExtensionContext, LanguageClient, LanguageClientOptions, ProvideCompletionItemsSignature, ServerOptions, services, TransportKind, window, workspace, WorkspaceConfiguration } from 'coc.nvim'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
@@ -93,12 +93,39 @@ export async function activate(context: ExtensionContext): Promise<void> {
   let client = new LanguageClient('vetur', 'Vetur Language Server', serverOptions, clientOptions)
   client.onReady().then(() => {
     registerCustomClientNotificationHandlers(client)
+    registerRestartVLSCommand(context, client)
   }).catch(_e => {
     // noop
   })
 
   subscriptions.push(
     services.registLanguageClient(client)
+  )
+}
+
+async function displayInitProgress<T = void>(promise: Promise<T>) {
+  return window.withProgress(
+    {
+      title: 'Vetur initialization',
+      cancellable: true
+    },
+    () => promise
+  )
+}
+
+function registerRestartVLSCommand(
+  context: ExtensionContext,
+  client: LanguageClient
+) {
+  context.subscriptions.push(
+    commands.registerCommand('vetur.restartVLS', () =>
+      displayInitProgress(
+        client
+          .stop()
+          .then(() => client.start())
+          .then(() => client.onReady())
+      )
+    )
   )
 }
 

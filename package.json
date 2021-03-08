@@ -388,7 +388,14 @@
           "description": "Enable template interpolation service that offers hover / definition / references in Vue interpolations."
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "command": "vetur.restartVLS",
+        "category": "Vetur",
+        "title": "Restart VLS (Vue Language Server)"
+      }
+    ]
   },
   "author": "chemzqm@gmail.com",
   "license": "MIT",
