@@ -394,6 +394,11 @@
         "command": "vetur.restartVLS",
         "category": "Vetur",
         "title": "Restart VLS (Vue Language Server)"
+      },
+      {
+        "command": "vetur.showDoctorInfo",
+        "category": "Vetur",
+        "title": "Show Doctor info"
       }
     ]
   },
