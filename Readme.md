@@ -89,6 +89,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.dev.logLevel`: Log level for VLS, default: `"INFO"`
   Valid options: ["INFO","DEBUG"]
 - `vetur.experimental.templateInterpolationService`: Enable template interpolation service that offers diagnostics / hover / definition / references., default: `false`
+- `vetur.underline.refValue`: Enable underline `.value` when using composition API., default: `true`
 
 Trigger completion in `coc-settings.json` to get full list of options.
 
