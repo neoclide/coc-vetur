@@ -3,6 +3,7 @@ import fs from 'fs'
 import os from 'os'
 import path from 'path'
 import { CancellationToken, CompletionContext, CompletionItem, CompletionList, DocumentSelector, InsertTextFormat, Position } from 'vscode-languageserver-protocol'
+import { generateDoctorCommand } from './commands/doctorCommand'
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
@@ -93,6 +94,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
   let client = new LanguageClient('vetur', 'Vetur Language Server', serverOptions, clientOptions)
   client.onReady().then(() => {
     registerCustomClientNotificationHandlers(client)
+    registerCustomLSPCommands(context, client)
     registerRestartVLSCommand(context, client)
   }).catch(_e => {
     // noop
@@ -159,4 +161,16 @@ function getGlobalSnippetDir(): string {
   } else {
     return path.resolve(os.homedir(), '.config', appName, 'User/snippets/vetur')
   }
+}
+
+function registerCustomLSPCommands(
+  context: ExtensionContext,
+  client: LanguageClient
+) {
+  context.subscriptions.push(
+    commands.registerCommand(
+      'vetur.showDoctorInfo',
+      generateDoctorCommand(client)
+    )
+  )
 }
