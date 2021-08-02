@@ -32,6 +32,11 @@
     "configuration": {
       "title": "Vetur",
       "properties": {
+        "vetur.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable coc-vetur extension."
+        },
         "vetur.ignoreProjectWarning": {
           "type": "boolean",
           "default": false,
