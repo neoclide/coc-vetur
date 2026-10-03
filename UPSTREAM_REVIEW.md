@@ -6,4 +6,4 @@ README identifies the vls language server, not an editor-extension fork. History
 
 No editor-client import baseline or applicable editor-source range has been established. Sharing the Vetur server and settings does not establish that its VS Code host client should be imported. Therefore no speculative client synchronization or server dependency update is made, especially while the user's package/lock changes are in progress. A future server-version upgrade should be based on the user's intended version and verified server compatibility.
 
-Only the explicitly requested repository maintenance authorization in AGENTS.md is added in this isolated worktree. No runtime behavior changed; no new runtime test was required. Original working tree remains untouched.
+This isolated worktree adds this upstream review record and the explicitly requested repository maintenance authorization in AGENTS.md. No runtime behavior changed; no new runtime test was required. Original working tree remains untouched.
