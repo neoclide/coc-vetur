@@ -83,7 +83,7 @@ Language server features provided by [vue-language-server](https://www.npmjs.com
 - `vetur.dev.vlsPath`: Path to VLS for Vetur developers. There are two ways of using it.
 
   1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.
-  2. `yarn global add vue-language-server` and point Vetur to the installed location (`yarn global dir` + node_modules/vue-language-server)
+  2. `npm install --global vls` and point Vetur to the installed location (`npm root --global` + /vls)
 
 - `vetur.dev.vlsPort`: The port that VLS listens to. Can be used for attaching to the VLS Node process for debugging / profiling, default: `-1`
 - `vetur.dev.logLevel`: Log level for VLS, default: `"INFO"`
@@ -101,6 +101,18 @@ Trigger completion in `coc-settings.json` to get full list of options.
 - Restart coc server by command `:CocRestart`
 - Make the issue happen.
 - Open tsserver output channel by command `:CocCommand workspace.showOutput vetur`.
+
+## Development
+
+Use Node.js 24 and npm 11.9.0 for development.
+
+```sh
+npm ci
+npm run build
+npm run typecheck
+```
+
+Commit `package-lock.json` when updating dependencies.
 
 ## License
 

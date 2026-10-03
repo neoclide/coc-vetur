@@ -14,7 +14,8 @@
   ],
   "scripts": {
     "build": "node esbuild.js",
-    "prepare": "node esbuild.js"
+    "prepare": "node esbuild.js",
+    "typecheck": "tsc --noEmit"
   },
   "activationEvents": [
     "onLanguage:vue"
@@ -361,7 +362,7 @@
         },
         "vetur.dev.vlsPath": {
           "type": "string",
-          "description": "Path to vls for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `yarn global add vls` and point Vetur to the installed location (`yarn global dir` + node_modules/vls)",
+          "description": "Path to vls for Vetur developers. There are two ways of using it. \n\n1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.\n2. `npm install --global vls` and point Vetur to the installed location (`npm root --global` + /vls)",
           "scope": "machine"
         },
         "vetur.dev.vlsPort": {
@@ -405,14 +406,15 @@
   "author": "chemzqm@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "10.12.0",
-    "coc.nvim": "^0.0.80",
-    "esbuild": "^0.8.29",
+    "@types/node": "^20.19.43",
+    "coc.nvim": "^0.0.83-next.25",
+    "esbuild": "^0.28.2",
     "rimraf": "^3.0.2",
-    "typescript": "^4.1.3",
-    "vscode-languageserver-protocol": "^3.15.3"
+    "typescript": "6.0.3",
+    "vscode-languageserver-protocol": "^3.18.3"
   },
   "dependencies": {
     "vls": "^0.7.4"
-  }
+  },
+  "packageManager": "npm@11.9.0"
 }

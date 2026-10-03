@@ -1,8 +1,8 @@
-import { commands, ExtensionContext, LanguageClient, LanguageClientOptions, ProvideCompletionItemsSignature, ServerOptions, services, TransportKind, window, workspace, WorkspaceConfiguration } from 'coc.nvim'
+import { CompletionContext, DocumentSelector, commands, ExtensionContext, LanguageClient, LanguageClientOptions, ProvideCompletionItemsSignature, ServerOptions, services, TransportKind, window, workspace, WorkspaceConfiguration } from 'coc.nvim'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
-import { CancellationToken, CompletionContext, CompletionItem, CompletionList, DocumentSelector, InsertTextFormat, Position } from 'vscode-languageserver-protocol'
+import { CancellationToken, CompletionItem, CompletionList, InsertTextFormat, Position } from 'vscode-languageserver-protocol'
 
 const sections = ['vetur', 'emmet', 'html', 'javascript', 'typescript', 'prettier', 'stylusSupremacy']
 
