@@ -17,10 +17,12 @@
     "declaration": false,
     "outDir": "lib",
     "target": "es2015",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "lib": ["es2018"],
-    "plugins": []
+    "plugins": [],
+    "types": ["node"],
+    "rootDir": "src"
   },
   "include": ["src"],
   "exclude": []
